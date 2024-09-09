@@ -13,10 +13,20 @@ public class StringCalculator {
         numbers = numbers.replace("\n", delimiter);
         String[] numArray = numbers.split(delimiter);
         int sum = 0;
+        StringBuilder negativeNumbers = new StringBuilder();
         for (String num : numArray) {
-            sum += Integer.parseInt(num);
+            int number = Integer.parseInt(num);
+            if (number < 0) {
+                if (negativeNumbers.length() > 0) {
+                    negativeNumbers.append(",");
+                }
+                negativeNumbers.append(number);
+            }
+            sum += number;
+        }
+        if (negativeNumbers.length() > 0) {
+            throw new IllegalArgumentException("Negative numbers not allowed: " + negativeNumbers.toString());
         }
         return sum;
     }
-
 }
