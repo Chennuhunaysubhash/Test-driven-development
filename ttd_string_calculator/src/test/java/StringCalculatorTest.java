@@ -28,4 +28,9 @@ public class StringCalculatorTest {
     public void testNewLinesBetweenNumbers() {
         assertEquals(6, StringCalculator.add("1\n2,3"));
     }
+
+    @Test
+    public void testDifferentDelimiters() {
+        assertEquals(3, StringCalculator.add("//;\n1;2"));
+    }
 }
